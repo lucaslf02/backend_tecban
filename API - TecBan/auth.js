@@ -2,7 +2,10 @@ import request from "request-promise";
 import path from "path";
 import fs from "fs";
 
+
+console.log("Caminho base: "+ process.cwd());
 var keyPath = path.join(process.cwd() , 'certificados', 'banco_1', 'certs', 'key.key');
+console.log("Caminho key: "+ keyPath);
 var certPath = path.join(process.cwd(), 'certificados', 'banco_1', 'certs', 'cert.crt');
 global.key = fs.readFileSync(keyPath);
 global.cert = fs.readFileSync(certPath);
