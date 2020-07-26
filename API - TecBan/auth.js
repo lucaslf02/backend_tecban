@@ -1,14 +1,15 @@
 import request from "request-promise";
 import path from "path";
 import fs from "fs";
+import {key1, cert1} from './certs.js';
 
 
-console.log("Caminho base: "+ process.cwd());
-var keyPath = path.join(process.cwd() , 'certificados', 'banco_1', 'certs', 'key.txt');
-console.log("Caminho key: "+ keyPath);
-var certPath = path.join(process.cwd(), 'certificados', 'banco_1', 'certs', 'cert.txt');
-global.key = fs.readFileSync(keyPath);
-global.cert = fs.readFileSync(certPath);
+// console.log("Caminho base: "+ process.cwd());
+// var keyPath = path.join(process.cwd() , 'certificados', 'banco_1', 'certs', 'key.txt');
+// console.log("Caminho key: "+ keyPath);
+// var certPath = path.join(process.cwd(), 'certificados', 'banco_1', 'certs', 'cert.txt');
+global.key = key1;
+global.cert = cert1;
 
 async function getAuth(scope) {
   //parametros aceitos:  "accounts openid" / "payments openid"
