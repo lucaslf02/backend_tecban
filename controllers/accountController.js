@@ -49,7 +49,7 @@ async function getToken(req, res) {
 
 async function getAllAccounts(req, res) {
   try {
-    let token = req.body.token;
+    let token = req.query.token;
     if (!token) {
       throw new Error("É necessário informar o token para obter as contas");
     }
@@ -68,7 +68,7 @@ async function getAllAccounts(req, res) {
 
 async function getSpecificAccount(req, res) {
   try {
-    let token = req.body.token;
+    let token = req.query.token;
     let idAccount = req.params.id;
     if (!token) {
       throw new Error("É necessário informar o token para obter as contas");
@@ -88,7 +88,7 @@ async function getSpecificAccount(req, res) {
 
 async function getBalances(req, res) {
   try {
-    let token = req.body.token;
+    let token = req.query.token;
     if (!token) {
       throw new Error("É necessário informar o token para obter a conta");
     }
@@ -107,7 +107,7 @@ async function getBalances(req, res) {
 
 async function getBalance(req, res) {
   try {
-    let token = req.body.token;
+    let token = req.query.token;
     let id = req.params.id;
     if (!token) {
       throw new Error("É necessário informar o token para obter a conta");

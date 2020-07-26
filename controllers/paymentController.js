@@ -49,7 +49,7 @@ async function getToken(req, res) {
 
 async function payment(req, res) {
   try {
-    let token = req.body.token;
+    let token = req.query.token;
     if (!token) {
       throw new Error("É necessário informar o token para efetivar o pagamento");
     }
