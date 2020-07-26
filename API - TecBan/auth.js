@@ -4,9 +4,9 @@ import fs from "fs";
 
 
 console.log("Caminho base: "+ process.cwd());
-var keyPath = path.join(process.cwd() , 'certificados', 'banco_1', 'certs', 'key.key');
+var keyPath = path.join(process.cwd() , 'certificados', 'banco_1', 'certs', 'key.txt');
 console.log("Caminho key: "+ keyPath);
-var certPath = path.join(process.cwd(), 'certificados', 'banco_1', 'certs', 'cert.crt');
+var certPath = path.join(process.cwd(), 'certificados', 'banco_1', 'certs', 'cert.txt');
 global.key = fs.readFileSync(keyPath);
 global.cert = fs.readFileSync(certPath);
 
