@@ -1,9 +1,11 @@
 import request from "request-promise";
+import path from "path";
 import fs from "fs";
 
-
-global.key = fs.readFileSync(process.cwd()+"/certificados/banco_1/certs/key.key");
-global.cert = fs.readFileSync(process.cwd()+"/certificados/banco_1/certs/cert.crt");
+var keyPath = path.join(process.cwd(), 'certificados', 'banco_1', 'certs', 'key.key');
+var certPath = path.join(process.cwd(), 'certificados', 'banco_1', 'certs', 'cert.crt');
+global.key = fs.readFileSync(keyPath);
+global.cert = fs.readFileSync(certPath);
 
 async function getAuth(scope) {
   //parametros aceitos:  "accounts openid" / "payments openid"
