@@ -2,8 +2,8 @@ import request from "request-promise";
 import path from "path";
 import fs from "fs";
 
-var keyPath = path.join(process.cwd(), 'certificados', 'banco_1', 'certs', 'key.key');
-var certPath = path.join(process.cwd(), 'certificados', 'banco_1', 'certs', 'cert.crt');
+var keyPath = path.join(__dirname, '..', 'certificados', 'banco_1', 'certs', 'key.key');
+var certPath = path.join(__dirname, '..', 'certificados', 'banco_1', 'certs', 'cert.crt');
 global.key = fs.readFileSync(keyPath);
 global.cert = fs.readFileSync(certPath);
 
