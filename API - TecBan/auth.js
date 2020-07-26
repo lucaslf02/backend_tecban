@@ -1,18 +1,11 @@
 import request from "request-promise";
-import path from "path";
-import fs from "fs";
 import {key1, cert1} from './certs.js';
 
-
-// console.log("Caminho base: "+ process.cwd());
-// var keyPath = path.join(process.cwd() , 'certificados', 'banco_1', 'certs', 'key.txt');
-// console.log("Caminho key: "+ keyPath);
-// var certPath = path.join(process.cwd(), 'certificados', 'banco_1', 'certs', 'cert.txt');
 global.key = key1;
 global.cert = cert1;
 
 async function getAuth(scope) {
-  //parametros aceitos:  "accounts openid" / "payments openid"
+  //parametros aceitos:  "accounts" / "payments"
 
   let res = await request.post({
     uri: "https://as1.tecban-sandbox.o3bank.co.uk/token",
@@ -26,21 +19,18 @@ async function getAuth(scope) {
     },
     form: {
       grant_type: "client_credentials",
-      scope: scope,
+      scope: scope+ " openid",
     },
     rejectUnauthorized: false,
   });
   return await JSON.parse(res);
 }
 
-
-
-
-async function getLinkAuthAccount(consentId, key, cert) {
+async function getLinkAuthAccount(consentId, key, cert, scope) {
   let res = await request.get({
     key: key,
     cert: cert,
-    url: `https://rs1.tecban-sandbox.o3bank.co.uk/ozone/v1.0/auth-code-url/${consentId}?scope=accounts&alg=none`,
+    url: `https://rs1.tecban-sandbox.o3bank.co.uk/ozone/v1.0/auth-code-url/${consentId}?scope=${scope}&alg=none`,
     rejectUnauthorized: false,
     headers: {
       Authorization:
@@ -51,8 +41,7 @@ async function getLinkAuthAccount(consentId, key, cert) {
   return res;
 }
 
-
-async function getTokenAccess(key, cert, code) {  
+async function getTokenAccess(key, cert, code, scope) {  
   let res = await request.post({
     url: "https://as1.tecban-sandbox.o3bank.co.uk/token",
     key: key,
@@ -65,7 +54,7 @@ async function getTokenAccess(key, cert, code) {
     },
     form: {
       grant_type: "authorization_code",
-      scope: "accounts",
+      scope: scope,
       code: code,
       redirect_uri: 'http://www.google.co.uk'
     },

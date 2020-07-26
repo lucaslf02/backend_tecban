@@ -55,14 +55,14 @@ async function accountConsents(accessToken, key, cert) {
 }
 
 async function getAuthAccount() {
-  let scope = "accounts openid";
+  let scope = "accounts";
   try {
     let { access_token } = await getAuth(scope);
     let { Data } = await accountConsents(access_token, key, cert);
     let { ConsentId } = Data;
     global.consentId_save = ConsentId;
     global.tokenConsent_save = access_token;
-    let link = await getLinkAuthAccount(ConsentId, key, cert);
+    let link = await getLinkAuthAccount(ConsentId, key, cert, scope);
     return link;
   } catch (err) {
     throw err;
@@ -95,8 +95,9 @@ async function getStatusAuth() {
 }
 
 async function confirmAuthAccount(code) {
+  let scope = "accounts";
   try {
-    let res = await getTokenAccess(key, cert, code);
+    let res = await getTokenAccess(key, cert, code,scope);
     return res;
   } catch (err) {
     throw err;

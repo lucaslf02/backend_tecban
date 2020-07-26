@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 
 import { userRouter } from './routes/userRouter.js';
 import { accountRouter } from './routes/accountRouter.js';
+import { paymentRouter } from './routes/paymentRouter.js';
 import { logger } from './config/logger.js';
 import { db } from './models/index.js';
 
@@ -32,6 +33,7 @@ app.use(cors());
 
 app.use(userRouter);
 app.use(accountRouter);
+app.use(paymentRouter);
 
 app.get('/', (req, res) => {
   res.send('API em execucao');

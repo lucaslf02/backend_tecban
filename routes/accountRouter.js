@@ -14,7 +14,7 @@ const app = express();
 app.get("/account/balances", getBalances);
 app.get("/account/auth", getAuth);
 app.get("/account/authstatus", getStatusConfirmation);
-app.get("/account/confirmAuth", getToken);
+app.post("/account/confirmAuth", getToken);
 app.get("/account/accounts", getAllAccounts);
 app.get("/account/:id", getSpecificAccount);
 app.get("/account/:id/balance", getBalance);

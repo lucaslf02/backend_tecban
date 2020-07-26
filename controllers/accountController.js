@@ -14,7 +14,7 @@ async function getAuth(req, res) {
     let link = await getAuthAccount();
     res.status(200).send({ link: link });
   } catch (error) {
-    logger.error(`POST /account/auth - ${JSON.stringify(error.message)}`);
+    logger.error(`GET /account/auth - ${JSON.stringify(error.message)}`);
     res
       .status(400)
       .send({
@@ -56,7 +56,7 @@ async function getAllAccounts(req, res) {
     let accounts = await getAccounts(token);
     res.status(200).send(accounts);
   } catch (error) {
-    logger.error(`POST /account/accounts - ${JSON.stringify(error.message)}`);
+    logger.error(`GET /account/accounts - ${JSON.stringify(error.message)}`);
     res
       .status(400)
       .send({
@@ -76,7 +76,7 @@ async function getSpecificAccount(req, res) {
     let account = await getAccount(token, idAccount);
     res.status(200).send(account);
   } catch (error) {
-    logger.error(`POST /account/accounts - ${JSON.stringify(error.message)}`);
+    logger.error(`GET /account/accounts - ${JSON.stringify(error.message)}`);
     res
       .status(400)
       .send({
@@ -95,7 +95,7 @@ async function getBalances(req, res) {
     let account = await getBalancesAccounts(token);
     res.status(200).send(account);
   } catch (error) {
-    logger.error(`POST /account/balances - ${JSON.stringify(error.message)}`);
+    logger.error(`GET /account/balances - ${JSON.stringify(error.message)}`);
     res
       .status(400)
       .send({
@@ -115,7 +115,7 @@ async function getBalance(req, res) {
     let account = await getBalanceAccount(token, id);
     res.status(200).send(account);
   } catch (error) {
-    logger.error(`POST /account/id/balance - ${JSON.stringify(error.message)}`);
+    logger.error(`GET /account/id/balance - ${JSON.stringify(error.message)}`);
     res
       .status(400)
       .send({
@@ -130,7 +130,7 @@ async function getStatusConfirmation(_,res){
     let status = await getStatusAuth();
     res.status(200).send(status)
   }catch(error){
-    logger.error(`POST /account/authstatus - ${JSON.stringify(error.message)}`);
+    logger.error(`GET /account/authstatus - ${JSON.stringify(error.message)}`);
     res
       .status(400)
       .send({
