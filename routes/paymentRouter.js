@@ -8,7 +8,7 @@ import {
 const app = express();
 
 
-app.get("/payment/auth", getAuth);
+app.post("/payment/auth", getAuth);
 app.get("/payment/authstatus", getStatusConfirmation);
 app.post("/payment", payment);
 app.post("/payment/confirmAuth", getToken);
