@@ -1,2 +1,1 @@
-# GRADES-APP
-# Projeto criado para o desafio do módulo 4 do curso bootcamp FullStack IGTI
+<type>[optional scope]: backend do aplicativo Saque facil criado para o hackaton tecban 2020
