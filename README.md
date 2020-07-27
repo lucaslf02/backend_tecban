@@ -1,7 +1,7 @@
-# backend do aplicativo Saque facil criado para o hackaton tecban 2020
+# Backend do aplicativo Saque Facil criado para o hackaton tecban 2020
 
-# Tecnologias utilizadas
-# NodeJS
-# MongoDB
-# Express
+# Tecnologias utilizadas:
+* NodeJS
+* MongoDB
+* Express
 
